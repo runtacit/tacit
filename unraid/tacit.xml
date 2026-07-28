@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>tacit</Name>
+  <Repository>runtacit/tacit:latest</Repository>
+  <Registry>https://hub.docker.com/r/runtacit/tacit/</Registry>
+  <Network>bridge</Network>
+  <MyIP/>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/runtacit/tacit/issues</Support>
+  <Project>https://runtacit.com</Project>
+  <Overview>Tacit is a modern, private, local-first automated podcast ad removal daemon using local Faster-Whisper ASR and LLM sponsor detection.</Overview>
+  <Category>MediaApp:Podcasts MediaServer:Other</Category>
+  <WebUI>http://[IP]:[PORT:8822]/</WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/runtacit/tacit/main/unraid/tacit.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/runtacit/tacit/main/assets/icon.png</Icon>
+  <ExtraParams/>
+  <PostArgs/>
+  <CPUset/>
+  <DateInstalled/>
+  <DonateText/>
+  <DonateLink/>
+  <Requires/>
+  <Config Name="Web Dashboard Port" Target="8822" Default="8822" Mode="tcp" Description="Tacit Web Dashboard &amp; API Port" Type="Port" Display="always" Required="true" Mask="false">8822</Config>
+  <Config Name="Podcasts Watch Path" Target="/podcasts" Default="/mnt/user/podcasts" Mode="rw" Description="Host directory containing podcast audio files" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/podcasts</Config>
+  <Config Name="Config AppData Path" Target="/config" Default="/mnt/user/appdata/tacit" Mode="rw" Description="Host directory for persistent database and settings" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/tacit</Config>
+  <Config Name="STT Endpoint URL" Target="STT_ENDPOINT_URL" Default="http://whisper:9000/asr" Description="Local Faster-Whisper speech-to-text API URL" Type="Variable" Display="always" Required="true" Mask="false">http://whisper:9000/asr</Config>
+  <Config Name="LLM Endpoint URL" Target="LLM_ENDPOINT_URL" Default="http://ollama:11434/v1" Description="OpenAI-compatible LLM endpoint URL" Type="Variable" Display="always" Required="true" Mask="false">http://ollama:11434/v1</Config>
+  <Config Name="LLM Model Name" Target="LLM_MODEL_NAME" Default="qwen2.5:14b" Description="LLM model name for commercial detection" Type="Variable" Display="always" Required="true" Mask="false">qwen2.5:14b</Config>
+  <Config Name="Scan Interval Minutes" Target="SCAN_INTERVAL_MINUTES" Default="60" Description="Scan interval frequency in minutes" Type="Variable" Display="always" Required="false" Mask="false">60</Config>
+  <Config Name="PUID" Target="PUID" Default="1000" Description="User ID for file permissions" Type="Variable" Display="advanced" Required="false" Mask="false">1000</Config>
+  <Config Name="PGID" Target="PGID" Default="1000" Description="Group ID for file permissions" Type="Variable" Display="advanced" Required="false" Mask="false">1000</Config>
+  <Config Name="UMASK" Target="UMASK" Default="022" Description="UMASK for file creation permissions" Type="Variable" Display="advanced" Required="false" Mask="false">022</Config>
+</Container>

@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+  tacit:
+    image: runtacit/tacit:latest
+    container_name: tacit
+    restart: unless-stopped
+    ports:
+      - "8822:8822"
+    environment:
+      - WATCH_DIRECTORY=/podcasts
+      - STT_ENDPOINT_URL=http://whisper:9000/asr
+      - LLM_ENDPOINT_URL=http://ollama:11434/v1
+      - LLM_MODEL_NAME=qwen2.5:14b
+      - SCAN_INTERVAL_MINUTES=60
+      - PUID=1000
+      - PGID=1000
+      - UMASK=022
+    volumes:
+      - /mnt/user/podcasts:/podcasts
+      - /mnt/user/appdata/tacit:/config
